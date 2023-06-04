@@ -36,5 +36,10 @@ if (!currentVid) {
 }
 });
 
+app.post('/videos', (req, res) => {
+    let data = req.body;
+    
+    fs.writeFile('./data/video-details.json', JSON.stringify(data));
+  });
 
 app.listen(port, () => console.log(`Listening on ${port}`));
