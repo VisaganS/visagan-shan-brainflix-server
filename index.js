@@ -37,7 +37,7 @@ app.get("/videos/:id", (req, res) => {
 });
 
 app.post("/videos", (req, res) => {
-  let data = {id:uuid(),...req.body};
+  let data = {id:uuid(), image: "http://localhost:8080/images/image-preview.jpeg",...req.body};
   let list = pullDB();
   list.push(data);
   writeDB(list);
