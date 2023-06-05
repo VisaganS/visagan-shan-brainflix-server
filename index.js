@@ -3,9 +3,9 @@ const app = express();
 const fs = require("fs");
 const cors = require("cors");
 const { uuid } = require("uuidv4");
+require("dotenv").config();
 const port = process.env.PORT || 8080;
 
-// const videoList =  require('./data/video-details.json');
 app.use(express.json());
 app.use(cors());
 app.use('/images', express.static('./public/images'));
@@ -37,7 +37,7 @@ app.get("/videos/:id", (req, res) => {
 });
 
 app.post("/videos", (req, res) => {
-  let data = {id:uuid(), image: "http://localhost:8080/images/image-preview.jpeg",...req.body};
+  let data = {id:uuid(), image: "http://localhost:8080/images/image-placeholder.jpg",...req.body};
   let list = pullDB();
   list.push(data);
   writeDB(list);
